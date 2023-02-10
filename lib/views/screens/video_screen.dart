@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:challenger/constants.dart';
+import 'package:challenger/views/screens/authentication/confirm_video_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -19,7 +22,7 @@ class _VideoScreenState extends State<VideoScreen> {
     final video = await ImagePicker().pickVideo(source: src);
 
     if(video != null){
-      Get.toNamed(RoutesUtil.getConfirnVideo());
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConfirmVideoScreen(videoFile: File(video.path), videoPath: video.path)));
     }
   }
 
