@@ -19,7 +19,7 @@ class _VideoScreenState extends State<VideoScreen> {
     final video = await ImagePicker().pickVideo(source: src);
 
     if(video != null){
-      Get.toNamed(RoutesUtil.getConfirnVideo());
+      Get.toNamed(RoutesUtil.getConfirmVideo());
     }
   }
 
