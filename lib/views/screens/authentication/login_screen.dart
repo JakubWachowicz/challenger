@@ -1,18 +1,45 @@
+import 'dart:async';
+
 import 'package:challenger/utils/RoutesUtil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+
 
 import '../../../constants.dart' as c;
 import '../../../constants.dart';
 import '../../widgets/text_input_field.dart';
 import '../home_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
+  bool isVisible = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+
+    KeyboardVisibilityController().onChange.listen((visable) {
+      setState(() {
+        this.isVisible = !visable;
+      });
+
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +51,10 @@ class LoginScreen extends StatelessWidget {
         .of(context)
         .size
         .height;
+
+
+
+
     return  Container(
           decoration: BoxDecoration(
             color:backGroundColor,
@@ -34,12 +65,14 @@ class LoginScreen extends StatelessWidget {
 
             ),
           ),
-          alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                isVisible?
                 Container(
                   width: width/3,
                   height: width/3,
@@ -50,7 +83,7 @@ class LoginScreen extends StatelessWidget {
 
                     )
                   ),
-                ),
+                ):SizedBox(),
 
                 Text('Challenger',
                     style: TextStyle(
@@ -130,3 +163,4 @@ class LoginScreen extends StatelessWidget {
         );
   }
 }
+
