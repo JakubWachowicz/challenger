@@ -11,8 +11,6 @@ import '../utils/RoutesUtil.dart';
 
 class AuthenticationClontroller extends GetxController{
 
-
-
   late Rx<User?> _user;
 
   @override
@@ -47,7 +45,6 @@ class AuthenticationClontroller extends GetxController{
     }catch(e){
         Get.snackbar("error", e.toString());
     }
-
   }
   void loginUser(String email,String password) async{
     try{
@@ -63,6 +60,4 @@ class AuthenticationClontroller extends GetxController{
       Get.snackbar("error", e.toString());
     }
   }
-
-
 }
