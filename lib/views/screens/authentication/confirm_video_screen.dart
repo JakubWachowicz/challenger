@@ -45,6 +45,7 @@ class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 1.5,
+              child: VideoPlayer(controller),
             ),
             const SizedBox(
               height: 30,
@@ -81,7 +82,10 @@ class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
                     height: 10,
                   ),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => uploadVideoController.uploadVideo(
+                          songController.text,
+                          captionController.text,
+                          widget.videoPath),
                       child: const Text(
                         'Share lol',
                         style: TextStyle(fontSize: 20, color: Colors.white),
