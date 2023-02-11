@@ -1,8 +1,9 @@
-import 'dart:async';
-
-import 'package:challenger/views/widgets/text_input_field.dart';
-import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:video_player/video_player.dart';
+import 'package:challenger/views/widgets/text_input_field.dart';
+import 'package:challenger/controllers/upload_video_controller.dart';
 
 class ConfirmVideoScreen extends StatefulWidget {
   final File videoFile;
@@ -16,15 +17,21 @@ class ConfirmVideoScreen extends StatefulWidget {
 }
 
 class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
+  late VideoPlayerController controller;
   TextEditingController songController = TextEditingController();
   TextEditingController captionController = TextEditingController();
+  UploadVideoController uploadVideoController = Get.put(UploadVideoController());
   
   @override
   void initState() {
     super.initState();
     setState(() {
-
+      controller = VideoPlayerController.file(widget.videoFile);
     });
+    controller.initialize();
+    controller.play();
+    controller.setVolume(1);
+    controller.setLooping(true);
   }
 
   Widget build(BuildContext context) {
