@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:challenger/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -42,12 +44,12 @@ class UploadVideoController extends GetxController {
           await firestore.collection('users').doc(uid).get();
 
       var allDocs = await firestore.collection('videos').get();
-      int len = allDocs.docs.length;
+      int len = (allDocs.docs.length+1);
       String videoUrl = await uploadVideoToStorage("Video $len", videoPath);
       String thumbnail = await uploadImageToStorage('Video $len', videoPath);
 
       Video video = Video(username:(userDoc.data()! as Map<String, dynamic>)["name"],
-          uid:uid,
+        uid:uid,
         id:"Video $len",
         likes: [],
         commentCount: 0,
@@ -55,13 +57,13 @@ class UploadVideoController extends GetxController {
         songName: songName,
         caption: caption,
         videoUrl: videoUrl,
-        profilePhoto: (userDoc.data()! as Map<String, dynamic>)["profilePhoto"],
+        profilePhoto: "12345",
         thumbnail: thumbnail
       );
       await firestore.collection('videos').doc("Video $len").set(video.toJson());
       Get.back();
     } catch (e) {
-      Get.snackbar("Error ",e.toString());
+      Get.snackbar("Error lolololo",e.toString());
     }
   }
 }
