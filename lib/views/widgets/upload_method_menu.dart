@@ -41,13 +41,59 @@ class _UpladMethodMenuState extends State<UpladMethodMenu> {
                   ),
                 ),
                 SizedBox(height: height/30,),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.all(15.0),
-                  child: ButtonWithIcon(icon: Icon(Icons.camera),text:'Create short'),
+                  child: InkWell(
+                    child: Container(
+                      height: height/15,
+                      decoration: BoxDecoration(
+                        color: buttonColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Icon(Icons.camera),
+                            SizedBox(
+                              width: width / 15,
+                            ),
+                            const Text(
+                              'Create short',
+                              style: TextStyle(color: backGroundColor,fontWeight: FontWeight.w500,fontSize: 20),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.all(15.0),
-                  child: ButtonWithIcon(icon: Icon(Icons.image_rounded),text: 'Browse gallery',)
+                  child: InkWell(
+                    child: Container(
+                      height: height/15,
+                      decoration: BoxDecoration(
+                        color: buttonColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.image_rounded),
+                            SizedBox(
+                              width: width / 15,
+                            ),
+                            const Text(
+                              'Browse gallery',
+                              style: TextStyle(color: backGroundColor,fontWeight: FontWeight.w500,fontSize: 20),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ),
               ],
             ),
