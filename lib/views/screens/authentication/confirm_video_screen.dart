@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:challenger/views/widgets/text_input_field.dart';
-import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
@@ -17,18 +16,13 @@ class ConfirmVideoScreen extends StatefulWidget {
 }
 
 class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
-  late VideoPlayerController controller;
   TextEditingController songController = TextEditingController();
   TextEditingController captionController = TextEditingController();
   @override
   void initState() {
     super.initState();
     setState(() {
-      controller = VideoPlayerController.file(widget.videoFile);
-      controller.initialize();
-      controller.play();
-      controller.setVolume(1);
-      controller.setLooping(true);
+
     });
   }
 
@@ -43,7 +37,6 @@ class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 1.5,
-              child: VideoPlayer(controller),
             ),
             const SizedBox(
               height: 30,
