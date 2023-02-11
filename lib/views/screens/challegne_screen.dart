@@ -24,7 +24,6 @@ class _ChallengeViewState extends State<ChallengeView> {
     Challenge challenge = Challenge(
         challengeName: "Running a marathon",
         challengeDescription: "Completing a full marathon within 4 hours",
-        dateEncountered: dateEncountered,
         uid: "abc123");
 
     return Container(

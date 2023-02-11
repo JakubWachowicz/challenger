@@ -18,6 +18,7 @@ class ConfirmVideoScreen extends StatefulWidget {
 class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
   TextEditingController songController = TextEditingController();
   TextEditingController captionController = TextEditingController();
+  
   @override
   void initState() {
     super.initState();
