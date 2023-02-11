@@ -57,7 +57,7 @@ class AuthenticationClontroller extends GetxController{
       }else{
         Get.snackbar("Errpr creating account", "enter all fields");}
     }catch(e){
-      Get.snackbar("error", e.toString());
+      Get.snackbar("error while uploading", e.toString());
     }
   }
 }
