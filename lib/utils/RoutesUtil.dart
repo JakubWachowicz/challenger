@@ -22,6 +22,5 @@ class RoutesUtil{
     GetPage(name: _home, page: ()=>HomeScreen()),
     GetPage(name: _login, page: ()=>LoginScreen()),
     GetPage(name: _signup, page: ()=>SignUpScreen()),
-    //GetPage(name: _confirm, page: () => ConfirmVideoScreen()),
   ];
 }

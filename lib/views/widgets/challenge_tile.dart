@@ -1,4 +1,5 @@
 import 'package:challenger/constants.dart';
+import 'package:challenger/views/widgets/upload_method_menu.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/challenge.dart';
@@ -10,6 +11,13 @@ class ChallengeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    Future openDialog() => showDialog(
+        context: context,
+        builder: (cntext) =>UpladMethodMenu());
+
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
@@ -60,6 +68,7 @@ class ChallengeTile extends StatelessWidget {
                     child: InkWell(
                         onTap: () {
                           print('Compeate Now!');
+                          openDialog();
                         },
                         child: const Center(
                             child: Text(

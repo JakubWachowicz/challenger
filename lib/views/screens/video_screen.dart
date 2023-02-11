@@ -22,6 +22,8 @@ class _VideoScreenState extends State<VideoScreen> {
     final video = await ImagePicker().pickVideo(source: src);
 
     if(video != null){
+
+      Get.toNamed(RoutesUtil.getConfirmVideo());
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConfirmVideoScreen(videoFile: File(video.path), videoPath: video.path)));
     }
   }
