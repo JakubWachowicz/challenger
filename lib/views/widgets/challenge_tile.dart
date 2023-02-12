@@ -15,6 +15,7 @@ class ChallengeTile extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     Future openDialog() => showDialog(
+
         context: context,
         builder: (cntext) =>UpladMethodMenu());
 

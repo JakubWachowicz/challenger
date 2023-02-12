@@ -24,7 +24,7 @@ class _ChallengeViewState extends State<ChallengeView> {
     Challenge challenge = Challenge(
         challengeName: "Running a marathon",
         challengeDescription: "Completing a full marathon within 4 hours",
-        uid: "abc123");
+        id: "abc123",imageUrl: "test");
 
     return Container(
       alignment: Alignment.topLeft,

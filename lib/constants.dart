@@ -1,7 +1,7 @@
 import 'package:challenger/controllers/authentication_controller.dart';
 import 'package:challenger/utils/ColorUtil.dart';
 import 'package:challenger/views/screens/challegne_screen.dart';
-import 'package:challenger/views/screens/video_screen.dart';
+import 'package:challenger/views/screens/upload_challenge.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -15,8 +15,8 @@ late final double screenHeight;
 
 const pages = [
   ChallengeView(),
-  VideoScreen(),
-  Text('Personal info', style: TextStyle(color: textColor))
+  Center(child: Text('Videos display',style:TextStyle(color:textColor),)),
+  UploadChallenge(),
 ];
 
 //Colors
