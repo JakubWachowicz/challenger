@@ -2,6 +2,7 @@ import 'package:challenger/controllers/authentication_controller.dart';
 import 'package:challenger/utils/ColorUtil.dart';
 import 'package:challenger/views/screens/challegne_screen.dart';
 import 'package:challenger/views/screens/upload_challenge.dart';
+import 'package:challenger/views/screens/viedo_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -13,9 +14,9 @@ import 'package:flutter/material.dart';
 late final double screenWidth;
 late final double screenHeight;
 
-const pages = [
+ var pages = [
   ChallengeView(),
-  Center(child: Text('Videos display',style:TextStyle(color:textColor),)),
+  VideoScreen(),
   UploadChallenge(),
 ];
 
