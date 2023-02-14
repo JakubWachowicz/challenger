@@ -20,8 +20,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
+
+    var userInputField = TextInputField(
+      controller: _userNameController,
+      labelText: 'user name',
+      icon: Icons.person,
+      isObscured: false,
+      dummyClass: DummyClass(true),
+      errorMessage: 'invalid user name',
+
+    );
+
+    var emailInputField = TextInputField(
+      controller: _emailController,
+      labelText: 'email',
+      icon: Icons.email_outlined,
+      isObscured: false,
+      dummyClass: DummyClass(true),
+      errorMessage: 'invalid email');
+
+    var passwordInputField = TextInputField(
+      controller: _passwordController,
+      labelText: 'password',
+      icon: Icons.lock,
+      isObscured: true,
+      dummyClass: DummyClass(true),
+      errorMessage: 'invalid email');
+
+
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -41,33 +74,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Container(
               width: width,
               margin: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextInputField(
-                  controller: _userNameController,
-                  labelText: 'user name',
-                  icon: Icons.person,
-                  isObscured: false)),
+              child: userInputField),
           const SizedBox(
             height: 20,
           ),
           Container(
               width: width,
               margin: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextInputField(
-                  controller: _emailController,
-                  labelText: 'email',
-                  icon: Icons.email_outlined,
-                  isObscured: false)),
+              child: emailInputField),
           const SizedBox(
             height: 20,
           ),
           Container(
               width: width,
               margin: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextInputField(
-                  controller: _passwordController,
-                  labelText: 'password',
-                  icon: Icons.lock,
-                  isObscured: true)),
+              child: passwordInputField),
           const SizedBox(
             height: 20,
           ),
