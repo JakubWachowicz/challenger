@@ -2,31 +2,65 @@ import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 
+
+class DummyClass{
+
+  DummyClass(bool isValid){
+    this.isValid =isValid;
+  }
+  bool isValid = true;
+}
 class TextInputField extends StatefulWidget {
 
   final TextEditingController controller;
   final String labelText;
   final IconData  icon;
   final bool isObscured;
-  const TextInputField({Key? key, required this.controller, required this.labelText, required this.icon, required this.isObscured}) : super(key: key);
+  final String errorMessage;
+  final DummyClass dummyClass;
+
+
+  const TextInputField({Key? key, required this.controller, required this.labelText, required this.icon, required this.isObscured, required this.errorMessage,required this.dummyClass }) : super(key: key);
+
 
   @override
-  State<TextInputField> createState() => _TextInputFieldState();
+  State<TextInputField> createState() => TextInputFieldState();
+
+
+  void setIsValid(bool isValid) {
+
+    dummyClass.isValid = false;
+    isValid = false;
+
+
+
+  }
+
+
 }
 
-class _TextInputFieldState extends State<TextInputField> {
+
+class TextInputFieldState extends State<TextInputField> {
   bool showSuffix = true;
+
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
-    return  TextField(
 
+
+    return  TextField(
 
 
       style: TextStyle(color: textColor),
 
         controller: widget.controller,
         decoration: InputDecoration(
+          errorText: widget.dummyClass.isValid ? null : widget.errorMessage,
           filled: true,
           fillColor: backGroundColor,
           labelText: widget.labelText,
