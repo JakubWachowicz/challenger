@@ -71,7 +71,7 @@ class TextInputFieldState extends State<TextInputField> {
             });
           } ,child: Icon(showSuffix? Icons.visibility:Icons.visibility_off, color: borderColor,),):null,
           labelStyle: const TextStyle(fontSize: 20,color: textColor),
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder:  OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
               borderSide: BorderSide(color: borderColor)),
           focusedBorder:  OutlineInputBorder(

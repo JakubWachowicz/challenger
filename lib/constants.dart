@@ -16,21 +16,22 @@ late final double screenHeight;
 
  var pages = [
   ChallengeView(),
-  VideoScreen(),
+  //VideoScreen(),
+  Text('Video display'),
   UploadChallenge(),
 ];
 
 //Colors
 //final backGroundColor  = '#f7d5e1'.toColor();
-const backGroundColor = Colors.white;
-const textColor = Colors.blueGrey;
+const backGroundColor = Colors.black;
+const textColor = Colors.white54;
 //const buttonColor = Colors.deepOrangeAccent;
 //final buttonColor = '#ffcc00'.toColor();
 //final buttonColor = '#ff5500'.toColor();
 //final buttonColor ='#f7d5e1'.toColor();
-final buttonColor = '#f2275a'.toColor();
-const borderColor = Colors.black38;
-final borderFocusedColor = '#f7d5e1'.toColor();
+final buttonColor = '#30d5c8'.toColor();
+final borderColor = '#f7d5e1'.toColor();
+final borderFocusedColor = '#d5325f'.toColor();
 
 //Firebase
 
