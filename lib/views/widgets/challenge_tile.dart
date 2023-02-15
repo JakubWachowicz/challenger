@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:challenger/constants.dart';
 import 'package:challenger/views/widgets/upload_method_menu.dart';
 import 'package:flutter/material.dart';
 
+
 import '../../models/challenge.dart';
+import '../widgets/timer.dart';
 
 class ChallengeTile extends StatelessWidget {
   final Challenge challenge;
@@ -68,40 +72,24 @@ class ChallengeTile extends StatelessWidget {
                     ),
                     child: InkWell(
                         onTap: () {
-                          print('Compeate Now!');
+                          print('Compete Now!');
                           openDialog();
                         },
                         child: const Center(
                             child: Text(
-                          'Compeate Now!',
+                          'Compete Now!',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w700),
                         )))),
                 SizedBox(
                   height: 10,
                 ),
-                Container(
-                  width: double.infinity,
-                  alignment: Alignment.centerRight,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text(
-                        '30 min left',
-                        style: TextStyle(color: textColor),
-                        textAlign: TextAlign.end,
-                      ),
-                      SizedBox(width: 10),
-                      Icon(
-                        Icons.timer,
-                        color: Colors.black,
-                      ),
-                    ],
-                  ),
-                )
+                OtpTimer(),
               ],
             ),
           )),
     );
   }
+
+  void setState(Null Function() param0) {}
 }
