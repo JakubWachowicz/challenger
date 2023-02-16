@@ -39,7 +39,7 @@ class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
   Widget build(BuildContext context) {
     var titleInputField = TextInputField(
       controller: songController,
-      labelText: 'Song Name',
+      labelText: 'Title',
       icon: Icons.music_note,
       isObscured: false,
       errorMessage: 'Incorrect title',
@@ -109,7 +109,7 @@ class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
                             captionController.text, widget.videoPath);
                       },
                       child: const Text(
-                        'Share lol',
+                        'Share',
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ))
                 ],
