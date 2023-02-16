@@ -90,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     )),
                   )
                 : SizedBox(),
+            SizedBox(height: 10,),
             Text('Challenger',
                 style: TextStyle(
                   fontSize: 40,

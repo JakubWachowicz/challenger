@@ -11,6 +11,8 @@ class OtpTimer extends StatefulWidget {
 class _OtpTimerState extends State<OtpTimer> {
   final interval = const Duration(seconds: 1);
 
+
+  late Timer _timer;
   final int timerMaxSeconds = 1800;
 
   int currentSeconds = 0;
@@ -20,9 +22,8 @@ class _OtpTimerState extends State<OtpTimer> {
 
   startTimeout([int? milliseconds]) {
     var duration = interval;
-    Timer.periodic(duration, (timer) {
+    _timer = Timer.periodic(duration, (timer) {
       setState(() {
-        print(timer.tick);
         currentSeconds = timer.tick;
         if (timer.tick >= timerMaxSeconds) timer.cancel();
       });
@@ -33,6 +34,13 @@ class _OtpTimerState extends State<OtpTimer> {
   void initState() {
     startTimeout();
     super.initState();
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _timer.cancel();
+    super.dispose();
+
   }
 
   @override
