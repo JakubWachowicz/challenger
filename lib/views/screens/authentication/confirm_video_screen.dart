@@ -8,6 +8,7 @@ import 'package:challenger/controllers/upload_video_controller.dart';
 class ConfirmVideoScreen extends StatefulWidget {
   final File videoFile;
   final String videoPath;
+
   const ConfirmVideoScreen(
       {Key? key, required this.videoFile, required this.videoPath})
       : super(key: key);
@@ -20,8 +21,9 @@ class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
   late VideoPlayerController controller;
   TextEditingController songController = TextEditingController();
   TextEditingController captionController = TextEditingController();
-  UploadVideoController uploadVideoController = Get.put(UploadVideoController());
-  
+  UploadVideoController uploadVideoController =
+      Get.put(UploadVideoController());
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +37,24 @@ class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
   }
 
   Widget build(BuildContext context) {
+    var titleInputField = TextInputField(
+      controller: songController,
+      labelText: 'Title',
+      icon: Icons.music_note,
+      isObscured: false,
+      errorMessage: 'Incorrect title',
+      dummyClass: DummyClass(true),
+    );
+
+    var captionInputField = TextInputField(
+      controller: captionController,
+      labelText: 'Caption',
+      icon: Icons.closed_caption,
+      isObscured: false,
+      errorMessage: 'Incorrect caption',
+      dummyClass: DummyClass(true),
+    );
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -56,38 +76,40 @@ class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
-                    width: MediaQuery.of(context).size.width - 20,
-                    child: TextInputField(
-                      controller: songController,
-                      labelText: 'Song Name',
-                      icon: Icons.music_note,
-                      isObscured: false,
-                    ),
-                  ),
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      width: MediaQuery.of(context).size.width - 20,
+                      child: titleInputField),
                   const SizedBox(
                     height: 10,
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 10),
                     width: MediaQuery.of(context).size.width - 20,
-                    child: TextInputField(
-                      controller: captionController,
-                      labelText: 'Caption',
-                      icon: Icons.closed_caption,
-                      isObscured: false,
-                    ),
+                    child: captionInputField,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   ElevatedButton(
-                      onPressed: () => uploadVideoController.uploadVideo(
-                          songController.text,
-                          captionController.text,
-                          widget.videoPath),
+                      onPressed: () {
+                        if (captionController.text ==  "") {
+                          setState(() {
+                            titleInputField.dummyClass.isValid = false;
+                          });
+                        }
+                        if (songController.text ==  "") {
+                          setState(() {
+                            titleInputField.dummyClass.isValid = false;
+                          });
+
+                          return;
+                        }
+
+                        uploadVideoController.uploadVideo(songController.text,
+                            captionController.text, widget.videoPath);
+                      },
                       child: const Text(
-                        'Share lol',
+                        'Share',
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ))
                 ],

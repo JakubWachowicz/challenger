@@ -32,9 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.search),label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.generating_tokens),label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person),label: 'home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search),label: 'Challenge'),
+          BottomNavigationBarItem(icon: Icon(Icons.generating_tokens),label: 'Videos'),
+          BottomNavigationBarItem(icon: Icon(Icons.person),label: 'Add'),
 
         ],
 

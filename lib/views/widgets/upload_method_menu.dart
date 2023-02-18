@@ -65,7 +65,7 @@ class _UpladMethodMenuState extends State<UpladMethodMenu> {
                         ),
                         const Text(
                           'Create short',
-                          style: TextStyle(color: backGroundColor,fontWeight: FontWeight.w500,fontSize: 20),
+                          style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 20),
                         )
                       ],
                     ),
@@ -93,7 +93,7 @@ class _UpladMethodMenuState extends State<UpladMethodMenu> {
                         ),
                         const Text(
                           'Browse gallery',
-                          style: TextStyle(color: backGroundColor,fontWeight: FontWeight.w500,fontSize: 20),
+                          style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 20),
                         )
                       ],
                     ),
