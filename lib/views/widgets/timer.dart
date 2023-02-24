@@ -16,7 +16,7 @@ class OtpTimerState extends State<OtpTimer> {
   late Timer _timer;
 
   startTimeout() {
-    var duration = const Duration(seconds: 1);
+    var duration = const Duration(milliseconds: 1000);
     _timer = Timer.periodic(duration, (timer) {
       setState(() {
         pozostalyCzas = czas.timeLeft(null);

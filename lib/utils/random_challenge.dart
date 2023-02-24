@@ -1,11 +1,11 @@
 import 'dart:math';
 
-void main() {//PRZYKŁADOWE UŻYCIE
+/*void main() {//PRZYKŁADOWE UŻYCIE
   StopChallengeTime a = StopChallengeTime(DateTime.now());
   a.timeLeft(null);
   print("Ziarno dla generatora :${a.seed()}");
   print("Pozostały czas ${a.timeLeft(null)}");
-}
+}*/
 class StopChallengeTime{
   DateTime time;
   StopChallengeTime(this.time){
@@ -16,8 +16,13 @@ class StopChallengeTime{
   String timeLeft(DateTime? now){
     now ??= DateTime.now();
     Duration left = Duration(days: 0, hours: time.hour-now.hour, minutes: (time.minute+30)-now.minute, seconds: time.second-now.second,
-    milliseconds: 0, microseconds: 0);
-    return "${left.inHours}:${left.inMinutes}:${left.inSeconds%60}";
+    milliseconds: time.millisecond - now.millisecond, microseconds: 0);
+    String output = "";
+    output += " ${left.inHours.toString().padLeft(2,'0')}";
+    output += ":${left.inMinutes.toString().padLeft(2,'0')}";
+    output += ":${(left.inSeconds%60).toString().padLeft(2,'0')}";
+    //output += ".${(left.inMilliseconds%1000).toString().padLeft(3,'0')}";
+    return output;
   }
   
   String seed(){
@@ -25,7 +30,7 @@ class StopChallengeTime{
                    + time.month.toString().padLeft(2,'0')
                    + time.day.toString().padLeft(2,'0')
                    + time.hour.toString().padLeft(2,'0')
-                   + time.minute.toString().padLeft(2,'0');
+                   + (time.minute < 30 ? '00':'30');
     return output;
   }
   Random rng(String input){
