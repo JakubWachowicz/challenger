@@ -33,18 +33,22 @@ class AuthenticationClontroller extends GetxController{
 
   static AuthenticationClontroller instance = Get.find();
 
-  Future<void> registerUser(String username,String email,String password) async {
+  Future<bool> registerUser(String username,String email,String password) async {
     try{
       if(username.isNotEmpty && email.isNotEmpty && password.isNotEmpty){
         var cred = await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
         model.User user = model.User(name:username,email: email,uid:cred.user!.uid);
         await firestore.collection('users').doc(cred.user!.uid).set(user.toJson());
         print('userCreated');
+        Get.snackbar("Creating account succeed", "you are ready to login!");
       }else{
-          Get.snackbar("Errpr creating account", "enter all fields");}
+          Get.snackbar("Error creating account", "enter all fields");}
+      return false;
     }catch(e){
-        Get.snackbar("error", e.toString());
+        Get.snackbar("Error", e.toString());
+        return false;
     }
+    return true;
   }
   void loginUser(String email,String password) async{
     try{
@@ -55,7 +59,7 @@ class AuthenticationClontroller extends GetxController{
         Get.toNamed(RoutesUtil.getHomeRoute());
 
       }else{
-        Get.snackbar("Errpr creating account", "enter all fields");}
+        Get.snackbar("Error creating account", "enter all fields");}
     }catch(e){
       Get.snackbar("error while uploading", e.toString());
     }

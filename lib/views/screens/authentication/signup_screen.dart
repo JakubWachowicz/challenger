@@ -101,10 +101,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               borderRadius: BorderRadius.circular(20),
             ),
             child: InkWell(
-                onTap: () {
-                  authcontroller.registerUser(_userNameController.text,
+                onTap: () async {
+                 Future<bool> ret = authcontroller.registerUser(_userNameController.text,
                       _emailController.text, _passwordController.text);
-                  Get.toNamed(RoutesUtil.getLoginRoute());
+                  await ret?Get.toNamed(RoutesUtil.getLoginRoute()):null;
                 },
                 child: const Center(
                     child: Text(

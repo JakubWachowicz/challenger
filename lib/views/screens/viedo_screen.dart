@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../controllers/video_controller.dart';
+import '../widgets/rating_bar.dart';
 import '../widgets/video_player_item.dart';
 import 'package:preload_page_view/preload_page_view.dart';
 
@@ -32,8 +33,9 @@ class _VideoScreenState extends State<VideoScreen> {
               final data = videoPlayerController.videList[index];
               return Stack(
                 children: [
-                  VideoPlayerItem(videoUrl: data.videoUrl,),
 
+                  VideoPlayerItem(videoUrl: data.videoUrl,),
+                  RainbowRatingBar(),
                   Column(
                     children: [
                       const SizedBox(height: 100,),
@@ -47,24 +49,17 @@ class _VideoScreenState extends State<VideoScreen> {
                             child: Column(mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: const [
-                                Text("username"),
-                                Text('caption')
+                              children:  [
+                                Text(data.username),
+                                Text(data.title)
                               ],),))
                         ],)),
 
                     ],
                   ),
 
-                  Container(
-                    width: 100,
-                    margin: EdgeInsets.only(top: height / 5),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                      ],
-                    ),
-                  )
+
+
                 ],
               );
             });
