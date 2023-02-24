@@ -83,16 +83,7 @@ class _ChallengeViewState extends State<ChallengeView> {
                           fontWeight: FontWeight.bold, color: backGroundColor),
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      alignment: Alignment.centerLeft,
-                      child: const Text(
-                        'Jakub',
-                        style: TextStyle(color: backGroundColor),
-                      ),
-                    ),
-                  ),
+                  
                 ],
               ),
             )
