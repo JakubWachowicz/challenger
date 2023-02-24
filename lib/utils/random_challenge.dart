@@ -11,10 +11,11 @@ class StopChallengeTime{
   StopChallengeTime(this.time){
    time = timeParse(time);
   }
-  update(DateTime time) => this.time = time;
+  update(DateTime time) => this.time = timeParse(time);
   
   String timeLeft(DateTime? now){
     now ??= DateTime.now();
+    update(now);
     Duration left = Duration(days: 0, hours: time.hour-now.hour, minutes: (time.minute+30)-now.minute, seconds: time.second-now.second,
     milliseconds: time.millisecond - now.millisecond, microseconds: 0);
     String output = "";
