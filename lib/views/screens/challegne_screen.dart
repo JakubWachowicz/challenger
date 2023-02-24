@@ -8,7 +8,7 @@ import '../../models/challenge.dart';
 import '../../models/user.dart';
 import '../widgets/challenge_tile.dart';
 import '../widgets/leaderboard.dart';
-
+import '/utils/random_challenge.dart';
 class ChallengeView extends StatefulWidget {
   const ChallengeView({Key? key}) : super(key: key);
 
@@ -63,12 +63,12 @@ class _ChallengeViewState extends State<ChallengeView> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    DateTime dateEncountered = DateTime.now();
+    //DateTime dateEncountered = DateTime.now();
     Challenge challenge = Challenge(
         challengeName: "Running a marathon",
         challengeDescription: "Completing a full marathon within 4 hours",
         id: "abc123",imageUrl: "test");
-
+    StopChallengeTime czas = StopChallengeTime(DateTime.now());
     return Obx(() {
       return Container(
         alignment: Alignment.topLeft,
