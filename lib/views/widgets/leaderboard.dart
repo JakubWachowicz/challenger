@@ -1,4 +1,5 @@
 import 'package:challenger/controllers/search_users_controller.dart';
+import 'package:challenger/models/video.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -64,7 +65,7 @@ class _LeaderboardState extends State<Leaderboard> {
                       color: backGroundColor
                   ),
                   child: ListView.builder(
-                    itemCount:  searchUser().length   ,
+                    itemCount:  searchVideos().length   ,
                     itemBuilder: (context, index) {
                       return Container(
                         height: 50,
@@ -96,9 +97,36 @@ class _LeaderboardState extends State<Leaderboard> {
                               child: Container(
                                 padding: EdgeInsets.symmetric(horizontal: 20),
                                 alignment: Alignment.centerLeft,
-                                child: Text(
-                                  searchUser()[index].name,
-                                  style: TextStyle(color: textColor),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      searchVideos()[index].username,
+                                      style: TextStyle(color: textColor),
+
+                                    ),
+
+                                    SizedBox(width: 20,),
+                                    Text(
+                                      searchVideos()[index].title,
+                                      style: TextStyle(color: textColor),
+
+                                    ),
+
+                                    SizedBox(width: 20,),
+
+                                    Text(
+                                      searchVideos()[index].points,
+                                      style: TextStyle(color: textColor),
+
+                                    ),
+                                    SizedBox(width: 10,),
+                                    ElevatedButton(onPressed: (){}, child: Icon(Icons.search), style: ElevatedButton.styleFrom(
+                                      primary: Colors.transparent,
+                                    ),),
+
+
+                                  ],
                                 ),
                               ),
                             ),
@@ -123,7 +151,9 @@ class _LeaderboardState extends State<Leaderboard> {
  final Rx<List<User>> _searchedUsers = Rx<List<User>>([]);
 
 
+ List<Video> get searchedVideos => _searchedVideos.value;
 
+ final Rx<List<Video>> _searchedVideos = Rx<List<Video>>([]);
 
 
  List<User> searchUser()  {
@@ -138,11 +168,50 @@ class _LeaderboardState extends State<Leaderboard> {
      return retVal;
    }));
 
+
+
+
    return searchedUsers;
  }
 
-  initMyContext() {
+
+ int mySortComparison(Video a, Video b) {
+   final propertyA = int.parse(a.points);
+   final propertyB =int.parse(b.points);
+   if (propertyA < propertyB) {
+     return -1;
+   } else if (propertyA > propertyB) {
+     return 1;
+   } else {
+     return 0;
+   }
+ }
+
+
+
+
+ List<Video> searchVideos()  {
+   _searchedVideos.bindStream(firestore
+       .collection('videos')
+       .snapshots()
+       .map((QuerySnapshot query) {
+     List<Video> retVal = [];
+     for (var elem in query.docs) {
+       retVal.add(Video.fromSnap(elem));
+     }
+     return retVal;
+   }));
+
+
+   searchedVideos.sort(mySortComparison);
+   return searchedVideos;
+ }
+
+
+
+ initMyContext() {
 
     searchUser();
+    searchVideos();
   }
 }
