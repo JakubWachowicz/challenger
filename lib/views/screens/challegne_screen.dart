@@ -78,12 +78,12 @@ class _ChallengeViewState extends State<ChallengeView> {
                     width: 30,
                     alignment: Alignment.center,
                     child: const Text(
-                      '${2}',
+                      ' ',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: backGroundColor),
                     ),
                   ),
-                  
+
                 ],
               ),
             )
