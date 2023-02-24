@@ -19,7 +19,7 @@ class _RainbowRatingBarState extends State<RainbowRatingBar> {
 
 
   bool isRated = true;
-  GivePointsToVide(Video video,double points) async{
+  GivePointsToVide(Video video,int points) async{
 
 
     print(points);
@@ -61,7 +61,7 @@ class _RainbowRatingBarState extends State<RainbowRatingBar> {
     checkIfRated(widget.video);
     super.initState();
   }
-  double val = 3;
+  int val = 3;
   @override
   Widget build(BuildContext context) {
 
@@ -121,7 +121,7 @@ class _RainbowRatingBarState extends State<RainbowRatingBar> {
 
 
                         setState(() {
-                          val = value;
+                          val = value.round();
                         });
 
 
