@@ -26,16 +26,13 @@ class StopChallengeTime{
     return output;
   }
   
-  String seed(){
-    String output  = time.year.toString().padLeft(4,'0')
+  int seed(){
+    String output  = (time.year%100).toString().padLeft(4,'0')
                    + time.month.toString().padLeft(2,'0')
                    + time.day.toString().padLeft(2,'0')
                    + time.hour.toString().padLeft(2,'0')
                    + (time.minute < 30 ? '00':'30');
-    return output;
-  }
-  Random rng(String input){
-    return Random(int.parse(input));
+    return int.parse(output);
   }
   DateTime timeParse(DateTime input) => DateTime(time.year,time.month,time.day,time.hour,(time.minute < 30 ? 00:30),0,0);
 }
