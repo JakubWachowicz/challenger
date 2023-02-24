@@ -178,9 +178,9 @@ class _LeaderboardState extends State<Leaderboard> {
  int mySortComparison(Video a, Video b) {
    final propertyA = int.parse(a.points);
    final propertyB =int.parse(b.points);
-   if (propertyA < propertyB) {
+   if (propertyA > propertyB) {
      return -1;
-   } else if (propertyA > propertyB) {
+   } else if (propertyA < propertyB) {
      return 1;
    } else {
      return 0;
