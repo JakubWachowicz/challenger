@@ -2,30 +2,24 @@ import 'dart:async';
 
 import 'package:challenger/constants.dart';
 import 'package:flutter/material.dart';
+import '/utils/random_challenge.dart';
 
 class OtpTimer extends StatefulWidget {
+  const OtpTimer({super.key});
   @override
-  _OtpTimerState createState() => _OtpTimerState();
+  OtpTimerState createState() => OtpTimerState();
 }
 
-class _OtpTimerState extends State<OtpTimer> {
-  final interval = const Duration(seconds: 1);
-
-
+class OtpTimerState extends State<OtpTimer> {
+  final StopChallengeTime czas = StopChallengeTime(DateTime.now());
+  String pozostalyCzas = "";
   late Timer _timer;
-  final int timerMaxSeconds = 1800;
 
-  int currentSeconds = 0;
-
-  String get timerText =>
-      '${((timerMaxSeconds - currentSeconds) ~/ 60).toString().padLeft(2, '0')}: ${((timerMaxSeconds - currentSeconds) % 60).toString().padLeft(2, '0')}';
-
-  startTimeout([int? milliseconds]) {
-    var duration = interval;
+  startTimeout() {
+    var duration = const Duration(milliseconds: 1000);
     _timer = Timer.periodic(duration, (timer) {
       setState(() {
-        currentSeconds = timer.tick;
-        if (timer.tick >= timerMaxSeconds) timer.cancel();
+        pozostalyCzas = czas.timeLeft(null);
       });
     });
   }
@@ -37,7 +31,6 @@ class _OtpTimerState extends State<OtpTimer> {
   }
   @override
   void dispose() {
-    // TODO: implement dispose
     _timer.cancel();
     super.dispose();
 
@@ -52,7 +45,7 @@ class _OtpTimerState extends State<OtpTimer> {
         const SizedBox(
           width: 5,
         ),
-        Text(timerText,style: const TextStyle(color: textColor, fontSize: 17, ),),
+        Text(czas.timeLeft(null),style: const TextStyle(color: textColor, fontSize: 17, ),),
       ],
     );
   }
