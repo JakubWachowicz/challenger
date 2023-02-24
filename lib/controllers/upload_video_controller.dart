@@ -42,26 +42,32 @@ class UploadVideoController extends GetxController {
           await firestore.collection('users').doc(uid).get();
 
       var allDocs = await firestore.collection('videos').get();
-      int len = allDocs.docs.length+1;
+      int len = allDocs.docs.length + 1;
       String videoUrl = await uploadVideoToStorage("Video $len", videoPath);
       String thumbnail = await uploadImageToStorage('Video $len', videoPath);
 
-      Video video = Video(username:(userDoc.data()! as Map<String, dynamic>)["name"],
-          uid:uid,
-        id:"Video $len",
-        likes: ["Jan"],
-        commentCount: 0,
-        shareCount: 0,
-        title: songName,
-        caption: caption,
-        videoUrl: videoUrl,
-        profilePhoto: '',
-        thumbnail: thumbnail
-      );
-      await firestore.collection('videos').doc("Video $len").set(video.toJson());
+      List<String> map = [];
+      map.add("test");
+      Video video = Video(
+          username: (userDoc.data()! as Map<String, dynamic>)["name"],
+          uid: uid,
+          id: "Video $len",
+          points: "0",
+          commentCount: 0,
+          shareCount: 0,
+          title: songName,
+          caption: caption,
+          videoUrl: videoUrl,
+          profilePhoto: '',
+          thumbnail: thumbnail,
+          users: map);
+      await firestore
+          .collection('videos')
+          .doc("Video $len")
+          .set(video.toJson());
       Get.back();
     } catch (e) {
-      Get.snackbar("Error ",e.toString());
+      Get.snackbar("Error ", e.toString());
     }
   }
 }
