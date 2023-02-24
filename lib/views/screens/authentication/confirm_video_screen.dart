@@ -36,6 +36,13 @@ class ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
     controller.setLooping(true);
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    controller.dispose();
+
+  }
   Widget build(BuildContext context) {
     var titleInputField = TextInputField(
       controller: songController,

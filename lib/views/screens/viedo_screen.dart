@@ -18,6 +18,9 @@ class VideoScreen extends StatefulWidget {
 class _VideoScreenState extends State<VideoScreen> {
    final VideoController videoPlayerController = Get.put(VideoController());
 
+
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -34,8 +37,8 @@ class _VideoScreenState extends State<VideoScreen> {
               return Stack(
                 children: [
 
-                  VideoPlayerItem(videoUrl: data.videoUrl,),
-                  RainbowRatingBar(),
+                  VideoPlayerItem(videoUrl: data.videoUrl),
+                  RainbowRatingBar(video:videoPlayerController.videList[index]),
                   Column(
                     children: [
                       const SizedBox(height: 100,),

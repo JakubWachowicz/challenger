@@ -17,7 +17,7 @@ late final double screenHeight;
  var pages = [
   ChallengeView(),
   VideoScreen(),
-  //Text('Video display'),
+  //Text('Video display',style: TextStyle(color: Colors.white),),
   UploadChallenge(),
 ];
 
